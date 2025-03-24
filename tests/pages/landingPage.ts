@@ -15,10 +15,22 @@ class LandingPage {
         // Navigate to the landing page
         await page.goto('');
 
+        //
+        const header = await page.$('h2.gem-c-related-navigation__main-heading');
+        const list = await header.evaluateHandle(h2 => h2.nextElementSibling.querySelector('ul'));
+        const listItems = await list.$$('li.gem-c-related-navigation__link');
+        const relatedContentActual = [];
+        for (const item of listItems) {
+            const text = await item.innerText();
+            console.log(text); // Prints the text inside each <li>
+            relatedContentActual.push(text);
+          }
+        //
+
         // Check all elements of the page
         await Promise.all([
             expect(page.locator(this.title)).toHaveText(landingPage_content.pageTitle),
-            // Continue checking the elements after adding them to the content file!
+            expect(relatedContentActual).toEqual(landingPage_content.relatedContent)
         ]);
     }
 
