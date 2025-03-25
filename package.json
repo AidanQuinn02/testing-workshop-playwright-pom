@@ -9,5 +9,8 @@
   },
   "scripts": {
     "test": "playwright test --project chromium --headed"
+  },
+  "dependencies": {
+    "yarn": "^1.22.22"
   }
 }

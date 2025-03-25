@@ -2,6 +2,14 @@ import { expect } from '@playwright/test';
 import {test} from "@playwright/test";
 import LandingPage from "./pages/landingPage";
 import landingPage_content from "./content/landingPage_content";
+import irregularHours_content from "./content/irregularHours_content";
+import holidayEntitlement_content from "./content/holidayEntitlement_content";
+import workOutHoliday_content from "./content/workOutHoliday_content";
+import hoursPerWeek_content from "./content/hoursPerWeek_content";
+import daysPerWeek_content from "./content/daysPerWeek_content";
+import endPage_content from "./content/endPage_content";
+import holidayInfo_content from "./content/holidayInfo_content";
+
 import { continueAction } from './helpers/common_comps';
 test.describe('E2E tests', () => {
 
@@ -14,27 +22,26 @@ test.describe('E2E tests', () => {
         //click on the start button and check if we have navigated to the next page 
         await page.goto('https://www.gov.uk/calculate-your-holiday-entitlement');
         await page.click('a[href="/calculate-your-holiday-entitlement/y"]');
-        await expect(page.locator('h1')).toHaveText('Does the employee work irregular hours or for part of the year?');
+        await expect(page.locator('h1')).toHaveText(irregularHours_content.pageTitle);
 
         //now fill in the form and click no and then continue
         await page.locator('label[for="response-1"] >> text=No').click();
-        await continueAction(page, 'Is the holiday entitlement based on:');
-
+        await continueAction(page, holidayEntitlement_content.pageTitle);   
 
         //we are on the next page, click hours worked and continue
         await page.locator('label[for="response-1"] >> text=hours worked per week').click();
-        await continueAction(page, 'Do you want to work out holiday:');
+        await continueAction(page, workOutHoliday_content.pageTitle);
 
         await page.locator('label[for="response-0"] >> text=for a full leave year').click();
-        await continueAction(page,'Number of hours worked per week?');
+        await continueAction(page, hoursPerWeek_content.pageTitle);
 
         await page.locator('[id="response"]').fill('40');
-        await continueAction(page,'Number of days worked per week?');
+        await continueAction(page, daysPerWeek_content.pageTitle);
 
         await page.locator('[id="response"]').fill('3.5');
-        await continueAction(page, 'Information based on your answers');
+        await continueAction(page, endPage_content.pageTitle);
         await page.click('a[href="/holiday-entitlement-rights"]');
-        await expect(page.locator('//*[@id="content"]/div[1]/div[1]/div/h1')).toContainText('Holiday entitlement');
+        await expect(page.locator('//*[@id="content"]/div[1]/div[1]/div/h1')).toContainText(holidayInfo_content.pageTitle);
         
     })
 
