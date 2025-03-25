@@ -94,4 +94,17 @@ test.describe('E2E tests', () => {
 
     })
 
+    test('single page analysis', async ({ page }) => {
+        await page.goto('https://www.gov.uk/calculate-your-holiday-entitlement');
+        await page.click('a[href="/calculate-your-holiday-entitlement/y"]');
+        await expect(page.locator('h1')).toHaveText(irregularHours_content.pageTitle);
+        await expect(page.locator('//*[@id="current-question"]/span')).toContainText(irregularHours_content.subtitle);
+        await expect(page.locator('.gem-c-hint.govuk-hint')).toContainText(irregularHours_content.hint);
+        const h2Elements = await page.locator('.govuk-footer__heading.govuk-heading-m').all();
+        for (const h2 of h2Elements) {
+            await expect(h2).toContainText(irregularHours_content.footerTitles[h2Elements.indexOf(h2)]);
+        }
+    })
+    
+
 })
