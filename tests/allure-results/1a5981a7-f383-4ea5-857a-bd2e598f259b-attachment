@@ -1,0 +1,71 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Page object model happy path for second test
+- Location: /Users/aidan.quinn/Desktop/Graduate Academy/TestingWorkshop/testing-workshop-playwright-pom/tests/POM.spec.ts:5:5
+
+# Error details
+
+```
+Error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+    at LandingPage.checkPageLoads (/Users/aidan.quinn/Desktop/Graduate Academy/TestingWorkshop/testing-workshop-playwright-pom/tests/pages/landingPage.ts:16:20)
+    at /Users/aidan.quinn/Desktop/Graduate Academy/TestingWorkshop/testing-workshop-playwright-pom/tests/POM.spec.ts:7:23
+```
+
+# Test source
+
+```ts
+   1 | import { Page } from 'playwright';
+   2 | import {expect} from "@playwright/test";
+   3 | import landingPage_content from "../content/landingPage_content";
+   4 |
+   5 | class LandingPage {
+   6 |     private readonly title: string;
+   7 |     private readonly text: string;
+   8 |
+   9 |     constructor() {
+  10 |         this.title = `.govuk-heading-xl`
+  11 |         // this.text =
+  12 |     }
+  13 |
+  14 |     async checkPageLoads(page: Page): Promise<void> {
+  15 |         // Navigate to the landing page
+> 16 |         await page.goto('');
+     |                    ^ Error: page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+  17 |
+  18 |         //
+  19 |         const header = await page.$('h2.gem-c-related-navigation__main-heading');
+  20 |         const list = await header.evaluateHandle(h2 => h2.nextElementSibling.querySelector('ul'));
+  21 |         const listItems = await list.$$('li.gem-c-related-navigation__link');
+  22 |         const relatedContentActual = [];
+  23 |         for (const item of listItems) {
+  24 |             const text = await item.innerText();
+  25 |             console.log(text); // Prints the text inside each <li>
+  26 |             relatedContentActual.push(text);
+  27 |           }
+  28 |         //
+  29 |
+  30 |         // Check all elements of the page
+  31 |         await Promise.all([
+  32 |             expect(page.locator(this.title)).toHaveText(landingPage_content.pageTitle),
+  33 |             expect(relatedContentActual).toEqual(landingPage_content.relatedContent)
+  34 |         ]);
+  35 |     }
+  36 |
+  37 |     async continueOn(page: Page): Promise<void> {
+  38 |         // Click the continue button
+  39 |
+  40 |     }
+  41 | }
+  42 |
+  43 | export default LandingPage;
+  44 |
+```
