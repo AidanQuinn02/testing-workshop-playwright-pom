@@ -1,0 +1,39 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Page object model happy path for second test
+- Location: /Users/aidan.quinn/Desktop/Graduate Academy/TestingWorkshop/testing-workshop-playwright-pom/tests/POM.spec.ts:5:5
+
+# Error details
+
+```
+Error: browserType.launch: Executable doesn't exist at /Users/aidan.quinn/Library/Caches/ms-playwright/chromium_headless_shell-1161/chrome-mac/headless_shell
+╔═════════════════════════════════════════════════════════════════════════╗
+║ Looks like Playwright Test or Playwright was just installed or updated. ║
+║ Please run the following command to download new browsers:              ║
+║                                                                         ║
+║     npx playwright install                                              ║
+║                                                                         ║
+║ <3 Playwright Team                                                      ║
+╚═════════════════════════════════════════════════════════════════════════╝
+```
+
+# Test source
+
+```ts
+  1 | import { expect } from '@playwright/test';
+  2 | import {test} from "@playwright/test";
+  3 | import LandingPage from "./pages/landingPage";
+  4 |
+> 5 | test(`Page object model happy path for second test`, async ({ page }): Promise<void> => {
+    |     ^ Error: browserType.launch: Executable doesn't exist at /Users/aidan.quinn/Library/Caches/ms-playwright/chromium_headless_shell-1161/chrome-mac/headless_shell
+  6 |     const landingPage: LandingPage = new LandingPage();
+  7 |     await landingPage.checkPageLoads(page);
+  8 |     await landingPage.continueOn(page);
+  9 | });
+```

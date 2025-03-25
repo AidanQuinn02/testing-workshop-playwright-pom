@@ -1,0 +1,279 @@
+Total <li> elements found: 68
+
+<li> 1:
+Text: Benefits
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 2:
+Text: Births, death, marriages and care
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 3:
+Text: Business and self-employed
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 4:
+Text: Childcare and parenting
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 5:
+Text: Citizenship and living in the UK
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 6:
+Text: Crime, justice and the law
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 7:
+Text: Disabled people
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 8:
+Text: Driving and transport
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 9:
+Text: Education and learning
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 10:
+Text: Employing people
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 11:
+Text: Environment and countryside
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 12:
+Text: Housing and local services
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 13:
+Text: Money and tax
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 14:
+Text: Passports, travel and living abroad
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 15:
+Text: Visas and immigration
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 16:
+Text: Working, jobs and pensions
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 17:
+Text: Departments
+                        Departments, agencies and public bodies
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 18:
+Text: News
+                        News stories, speeches, letters and notices
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 19:
+Text: Guidance and regulation
+                        Detailed guidance, regulations and rules
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 20:
+Text: Research and statistics
+                        Reports, analysis and official statistics
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 21:
+Text: Policy papers and consultations
+                        Consultations and strategy
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 22:
+Text: Transparency
+                        Data, Freedom of Information releases and corporate reports
+Class: gem-c-layout-super-navigation-header__dropdown-list-item
+
+<li> 23:
+Text: Home
+Class: govuk-breadcrumbs__list-item
+
+<li> 24:
+Text: Employing people
+Class: govuk-breadcrumbs__list-item
+
+<li> 25:
+Text: Statutory leave and time off
+Class: govuk-breadcrumbs__list-item
+
+<li> 26:
+Text: a full leave year
+Class: No class
+
+<li> 27:
+Text: part of a leave year, if the job started or finished part way through the year
+Class: No class
+
+<li> 28:
+Text: Statutory leave and time off
+Class: gem-c-related-navigation__link
+
+<li> 29:
+Text: Holidays, time off, sick leave, maternity and paternity leave
+Class: gem-c-related-navigation__link
+
+<li> 30:
+Text: Calculate your agricultural worker holiday entitlement
+Class: gem-c-related-navigation__link
+
+<li> 31:
+Text: Holiday entitlement
+Class: gem-c-related-navigation__link
+
+<li> 32:
+Text: Night working hours
+Class: gem-c-related-navigation__link
+
+<li> 33:
+Text: Sunday working
+Class: gem-c-related-navigation__link
+
+<li> 34:
+Text: Maybe
+Class: gem-c-feedback__option-list-item govuk-visually-hidden
+
+<li> 35:
+Text: Yes this page is useful
+Class: gem-c-feedback__option-list-item
+
+<li> 36:
+Text: No this page is not useful
+Class: gem-c-feedback__option-list-item
+
+<li> 37:
+Text: Benefits
+Class: govuk-footer__list-item
+
+<li> 38:
+Text: Births, death, marriages and care
+Class: govuk-footer__list-item
+
+<li> 39:
+Text: Business and self-employed
+Class: govuk-footer__list-item
+
+<li> 40:
+Text: Childcare and parenting
+Class: govuk-footer__list-item
+
+<li> 41:
+Text: Citizenship and living in the UK
+Class: govuk-footer__list-item
+
+<li> 42:
+Text: Crime, justice and the law
+Class: govuk-footer__list-item
+
+<li> 43:
+Text: Disabled people
+Class: govuk-footer__list-item
+
+<li> 44:
+Text: Driving and transport
+Class: govuk-footer__list-item
+
+<li> 45:
+Text: Education and learning
+Class: govuk-footer__list-item
+
+<li> 46:
+Text: Employing people
+Class: govuk-footer__list-item
+
+<li> 47:
+Text: Environment and countryside
+Class: govuk-footer__list-item
+
+<li> 48:
+Text: Housing and local services
+Class: govuk-footer__list-item
+
+<li> 49:
+Text: Money and tax
+Class: govuk-footer__list-item
+
+<li> 50:
+Text: Passports, travel and living abroad
+Class: govuk-footer__list-item
+
+<li> 51:
+Text: Visas and immigration
+Class: govuk-footer__list-item
+
+<li> 52:
+Text: Working, jobs and pensions
+Class: govuk-footer__list-item
+
+<li> 53:
+Text: Departments
+Class: govuk-footer__list-item
+
+<li> 54:
+Text: News
+Class: govuk-footer__list-item
+
+<li> 55:
+Text: Guidance and regulation
+Class: govuk-footer__list-item
+
+<li> 56:
+Text: Research and statistics
+Class: govuk-footer__list-item
+
+<li> 57:
+Text: Policy papers and consultations
+Class: govuk-footer__list-item
+
+<li> 58:
+Text: Transparency
+Class: govuk-footer__list-item
+
+<li> 59:
+Text: How government works
+Class: govuk-footer__list-item
+
+<li> 60:
+Text: Get involved
+Class: govuk-footer__list-item
+
+<li> 61:
+Text: Help
+Class: govuk-footer__inline-list-item
+
+<li> 62:
+Text: Privacy
+Class: govuk-footer__inline-list-item
+
+<li> 63:
+Text: Cookies
+Class: govuk-footer__inline-list-item
+
+<li> 64:
+Text: Accessibility statement
+Class: govuk-footer__inline-list-item
+
+<li> 65:
+Text: Contact
+Class: govuk-footer__inline-list-item
+
+<li> 66:
+Text: Terms and conditions
+Class: govuk-footer__inline-list-item
+
+<li> 67:
+Text: Rhestr o Wasanaethau Cymraeg
+Class: govuk-footer__inline-list-item
+
+<li> 68:
+Text: Government Digital Service
+Class: govuk-footer__inline-list-item

@@ -1,0 +1,264 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Page object model happy path for second test
+- Location: /Users/aidan.quinn/Desktop/Graduate Academy/TestingWorkshop/testing-workshop-playwright-pom/tests/POM.spec.ts:5:5
+
+# Error details
+
+```
+Error: Timed out 5000ms waiting for expect(locator).toContainText(expected)
+
+Locator: locator('//*[@id="content"]/div[2]/div[1]/div/div/nav')
+- Expected  -  2
++ Received  + 10
+
+  Array [
+-   "Statutory leave and time off",
+-   "Holidays, time off, sick leave, maternity and paternity leave",
++   "
++
++     Explore the topic
++
++   
++         Statutory leave and time off
++         Holidays, time off, sick leave, maternity and paternity leave
++
++   
++ ",
+  ]
+Call log:
+  - expect.toContainText with timeout 5000ms
+  - waiting for locator('//*[@id="content"]/div[2]/div[1]/div/div/nav')
+    9 × locator resolved to 1 element
+
+    at LandingPage.checkPageLoads (/Users/aidan.quinn/Desktop/Graduate Academy/TestingWorkshop/testing-workshop-playwright-pom/tests/pages/landingPage.ts:64:103)
+    at /Users/aidan.quinn/Desktop/Graduate Academy/TestingWorkshop/testing-workshop-playwright-pom/tests/POM.spec.ts:7:5
+```
+
+# Page snapshot
+
+```yaml
+- region "Cookies on GOV.UK":
+  - heading "Cookies on GOV.UK" [level=2]
+  - paragraph: We use some essential cookies to make this website work.
+  - paragraph: We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
+  - paragraph: We also use cookies set by other sites to help us deliver content from their services.
+  - button "Accept additional cookies"
+  - button "Reject additional cookies"
+  - link "View cookies"
+- link "Skip to main content"
+- banner:
+  - link "Go to the GOV.UK homepage":
+    - img "GOV.UK"
+  - navigation "Navigation menu":
+    - heading "Navigation menu" [level=2]
+    - button "Show navigation menu": Menu
+    - button "Show search menu": Search GOV.UK
+- navigation "Breadcrumb":
+  - list:
+    - listitem:
+      - link "Home"
+    - listitem:
+      - link "Employing people"
+    - listitem:
+      - link "Statutory leave and time off"
+- main:
+  - heading "Calculate holiday entitlement" [level=1]
+  - article:
+    - paragraph: "Use this tool to calculate holiday entitlement for:"
+    - list:
+      - listitem: a full leave year
+      - listitem: part of a leave year, if the job started or finished part way through the year
+    - paragraph: If an employee works irregular hours or for part of the year, you also use this calculator to work out how much leave they’ve built up (‘accrued’) over a pay period.
+    - button "Start now"
+  - navigation "Explore the topic":
+    - heading "Explore the topic" [level=2]
+    - list:
+      - listitem:
+        - link "Statutory leave and time off"
+      - listitem:
+        - link "Holidays, time off, sick leave, maternity and paternity leave"
+  - heading "Related content" [level=2]
+  - navigation "Related content":
+    - list:
+      - listitem:
+        - link "Calculate your agricultural worker holiday entitlement"
+      - listitem:
+        - link "Holiday entitlement"
+      - listitem:
+        - link "Night working hours"
+      - listitem:
+        - link "Sunday working"
+- heading "Is this page useful?" [level=2]
+- list:
+  - listitem:
+    - button "Yes this page is useful"
+  - listitem:
+    - button "No this page is not useful"
+- button "Report a problem with this page"
+- contentinfo:
+  - heading "Services and information" [level=2]
+  - list:
+    - listitem:
+      - link "Benefits"
+    - listitem:
+      - link "Births, death, marriages and care"
+    - listitem:
+      - link "Business and self-employed"
+    - listitem:
+      - link "Childcare and parenting"
+    - listitem:
+      - link "Citizenship and living in the UK"
+    - listitem:
+      - link "Crime, justice and the law"
+    - listitem:
+      - link "Disabled people"
+    - listitem:
+      - link "Driving and transport"
+    - listitem:
+      - link "Education and learning"
+    - listitem:
+      - link "Employing people"
+    - listitem:
+      - link "Environment and countryside"
+    - listitem:
+      - link "Housing and local services"
+    - listitem:
+      - link "Money and tax"
+    - listitem:
+      - link "Passports, travel and living abroad"
+    - listitem:
+      - link "Visas and immigration"
+    - listitem:
+      - link "Working, jobs and pensions"
+  - heading "Government activity" [level=2]
+  - list:
+    - listitem:
+      - link "Departments"
+    - listitem:
+      - link "News"
+    - listitem:
+      - link "Guidance and regulation"
+    - listitem:
+      - link "Research and statistics"
+    - listitem:
+      - link "Policy papers and consultations"
+    - listitem:
+      - link "Transparency"
+    - listitem:
+      - link "How government works"
+    - listitem:
+      - link "Get involved"
+  - separator
+  - heading "Support links" [level=2]
+  - list:
+    - listitem:
+      - link "Help"
+    - listitem:
+      - link "Privacy"
+    - listitem:
+      - link "Cookies"
+    - listitem:
+      - link "Accessibility statement"
+    - listitem:
+      - link "Contact"
+    - listitem:
+      - link "Terms and conditions"
+    - listitem:
+      - link "Rhestr o Wasanaethau Cymraeg"
+    - listitem:
+      - link "Government Digital Service"
+  - text: All content is available under the
+  - link "Open Government Licence v3.0"
+  - text: ", except where otherwise stated"
+  - link "© Crown copyright"
+```
+
+# Test source
+
+```ts
+   1 | import * as playwright from 'playwright';
+   2 | import {expect} from "@playwright/test";
+   3 | import landingPage_content from "../content/landingPage_content";
+   4 |
+   5 | class LandingPage {
+   6 |     private readonly title: string;
+   7 |     private readonly text: string;
+   8 |
+   9 |     constructor() {
+  10 |         this.title = `.govuk-heading-xl`
+  11 |         // this.text =
+  12 |     }
+  13 |
+  14 |     // async checkLinks(page: Page, links: string[], identifiers: string[]): Promise<void> {
+  15 |     //     const header = await page.$('h2.gem-c-related-navigation__main-heading');
+  16 |     //     const list = await header.evaluateHandle(h2 => h2.nextElementSibling.querySelector('ul'));
+  17 |     //     const listItems = await list.$$('li.gem-c-related-navigation__link');
+  18 |     //     const listActual = [];
+  19 |     //     for (const item of listItems) {
+  20 |     //         const text = await item.innerText();
+  21 |     //         console.log(text); // Prints the text inside each <li>
+  22 |     //         listActual.push(text);
+  23 |     //       }
+  24 |     //     //
+  25 |
+  26 |     //     // Check all elements of the page
+  27 |     //     await Promise.all([
+  28 |     //         expect(page.locator(this.title)).toHaveText(landingPage_content.pageTitle),
+  29 |     //         expect(relatedContentActual).toEqual(landingPage_content.relatedContent)
+  30 |     //     ]);
+  31 |
+  32 |
+  33 |     // }
+  34 |
+  35 |
+  36 |
+  37 |     async checkPageLoads(page: Page): Promise<void> {
+  38 |         // Navigate to the landing page
+  39 |         await page.goto('https://www.gov.uk/calculate-your-holiday-entitlement');
+  40 |
+  41 |         //checking the related content links
+  42 |         const header = await page.$('h2.gem-c-related-navigation__main-heading');
+  43 |         const list = await header.evaluateHandle(h2 => h2.nextElementSibling.querySelector('ul'));
+  44 |         const listItems = await list.$$('li.gem-c-related-navigation__link');
+  45 |         const relatedContentActual = [];
+  46 |         for (const item of listItems) {
+  47 |             const text = await item.innerText();
+  48 |             console.log(text); // Prints the text inside each <li>
+  49 |             relatedContentActual.push(text);
+  50 |           }
+  51 |         //
+  52 |
+  53 |         // Check all elements of the page
+  54 |         await Promise.all([
+  55 |             expect(page.locator(this.title)).toHaveText(landingPage_content.pageTitle),
+  56 |             expect(relatedContentActual).toEqual(landingPage_content.relatedContent)
+  57 |         ]);
+  58 |
+  59 |         //checking the explore the topic links 
+  60 |         
+  61 |
+  62 |         
+  63 |         // Now find all <li> elements under this header
+> 64 |         const listItems2 = await expect(page.locator('//*[@id="content"]/div[2]/div[1]/div/div/nav')).toContainText(landingPage_content.exploreTheTopic);
+     |                                                                                                       ^ Error: Timed out 5000ms waiting for expect(locator).toContainText(expected)
+  65 |
+  66 |     
+  67 |
+  68 |         }
+  69 |
+  70 |     async continueOn(page: Page): Promise<void> {
+  71 |         // Click the continue button
+  72 |
+  73 |     }
+  74 | }
+  75 |
+  76 | export default LandingPage;
+  77 |
+```
