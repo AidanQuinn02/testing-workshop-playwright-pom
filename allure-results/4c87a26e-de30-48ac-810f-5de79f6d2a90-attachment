@@ -1,0 +1,133 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: E2E tests >> error path - checking error message
+- Location: /Users/aidan.quinn/Desktop/Graduate Academy/TestingWorkshop/testing-workshop-playwright-pom/tests/POM.spec.ts:48:9
+
+# Error details
+
+```
+Error: browserType.launch: Chromium distribution 'msedge' is not found at /Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge
+Run "yarn playwright install msedge"
+```
+
+# Test source
+
+```ts
+   1 | import { expect } from '@playwright/test';
+   2 | import {test} from "@playwright/test";
+   3 | import LandingPage from "./pages/landingPage";
+   4 | import landingPage_content from "./content/landingPage_content";
+   5 | import irregularHours_content from "./content/irregularHours_content";
+   6 | import holidayEntitlement_content from "./content/holidayEntitlement_content";
+   7 | import workOutHoliday_content from "./content/workOutHoliday_content";
+   8 | import hoursPerWeek_content from "./content/hoursPerWeek_content";
+   9 | import daysPerWeek_content from "./content/daysPerWeek_content";
+   10 | import endPage_content from "./content/endPage_content";
+   11 | import holidayInfo_content from "./content/holidayInfo_content";
+   12 |
+   13 | import { continueAction } from './helpers/common_comps';
+   14 | test.describe('E2E tests', () => {
+   15 |
+   16 |     test(`Checking landing page and links`, async ({ page }): Promise<void> => {
+   17 |         const landingPage: LandingPage = new LandingPage();
+   18 |         await landingPage.checkPageLoads(page);
+   19 |     });
+   20 |
+   21 |     test('happy path - no', async ({ page }) => {
+   22 |         //click on the start button and check if we have navigated to the next page 
+   23 |         await page.goto('https://www.gov.uk/calculate-your-holiday-entitlement');
+   24 |         await page.click('a[href="/calculate-your-holiday-entitlement/y"]');
+   25 |         await expect(page.locator('h1')).toHaveText(irregularHours_content.pageTitle);
+   26 |
+   27 |         //now fill in the form and click no and then continue
+   28 |         await page.locator('label[for="response-1"] >> text=No').click();
+   29 |         await continueAction(page, holidayEntitlement_content.pageTitle);   
+   30 |
+   31 |         //we are on the next page, click hours worked and continue
+   32 |         await page.locator('label[for="response-1"] >> text=hours worked per week').click();
+   33 |         await continueAction(page, workOutHoliday_content.pageTitle);
+   34 |
+   35 |         await page.locator('label[for="response-0"] >> text=for a full leave year').click();
+   36 |         await continueAction(page, hoursPerWeek_content.pageTitle);
+   37 |
+   38 |         await page.locator('[id="response"]').fill('40');
+   39 |         await continueAction(page, daysPerWeek_content.pageTitle);
+   40 |
+   41 |         await page.locator('[id="response"]').fill('3.5');
+   42 |         await continueAction(page, endPage_content.pageTitle);
+   43 |         await page.click('a[href="/holiday-entitlement-rights"]');
+   44 |         await expect(page.locator('//*[@id="content"]/div[1]/div[1]/div/h1')).toContainText(holidayInfo_content.pageTitle);
+   45 |         
+   46 |     })
+   47 |
+>  48 |     test('error path - checking error message', async ({ page }) => {
+      |         ^ Error: browserType.launch: Chromium distribution 'msedge' is not found at /Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge
+   49 |         await page.goto('https://www.gov.uk/calculate-your-holiday-entitlement');
+   50 |         await page.click('a[href="/calculate-your-holiday-entitlement/y"]');
+   51 |         await expect(page.locator('h1')).toHaveText('Does the employee work irregular hours or for part of the year?');
+   52 |
+   53 |         //now fill in the form and click no and then continue
+   54 |         await page.locator('label[for="response-1"] >> text=No').click();
+   55 |         await continueAction(page,'Is the holiday entitlement based on:');
+   56 |
+   57 |         //we are on the next page, click hours worked and continue
+   58 |         await page.locator('label[for="response-1"] >> text=hours worked per week').click();
+   59 |         await continueAction(page,'Do you want to work out holiday:');
+   60 |
+   61 |         await page.locator('label[for="response-0"] >> text=for a full leave year').click();
+   62 |         await continueAction(page,'Number of hours worked per week?');
+   63 |
+   64 |         await page.locator('[id="response"]').fill('40');
+   65 |         await continueAction(page,'Number of days worked per week?');
+   66 |
+   67 |         await page.locator('[id="response"]').fill('3.5');
+   68 |         await continueAction(page,'Information based on your answers');
+   69 |
+   70 |         await page.locator('a[data-ga4-link*="Number of hours worked per week?"]').click();
+   71 |         await expect(page.locator('h1')).toHaveText('Number of hours worked per week?');
+   72 |         await page.locator('[id="response"]').fill('200');
+   73 |         await page.locator('button:has-text("Continue")').click();
+   74 |         await expect(page.locator('//*[@id="error-summary"]/div/div/ul/li')).toContainText(landingPage_content.errorMessageHours);
+   75 |         await page.locator('[id="response"]').fill('');
+   76 |         await page.locator('button:has-text("Continue")').click();
+   77 |         await expect(page.locator('//*[@id="error-summary"]/div/div')).toContainText(landingPage_content.errorMessageEmpty);
+   78 |     })
+   79 |
+   80 |     test('error path - year error checker', async ({ page }) => {
+   81 |         await page.goto('https://www.gov.uk/calculate-your-holiday-entitlement');
+   82 |         await page.click('a[href="/calculate-your-holiday-entitlement/y"]');
+   83 |         
+   84 |         await page.locator('label[for="response-0"] >> text=Yes').click();
+   85 |         await continueAction(page,'When does the leave year start?');
+   86 |
+   87 |         await page.locator('label[for="response-0"]').fill('1');
+   88 |         await page.locator('label[for="response-1"]').fill('1');
+   89 |         await page.locator('label[for="response-2"]').fill('eeeeee');
+   90 |         await page.locator('button:has-text("Continue")').click();
+   91 |         // Expected to break here due to bug
+   92 |         await expect(page.url()).toBe('https://www.gov.uk/calculate-your-holiday-entitlement/y/irregular-hours-and-part-year');
+   93 |         await expect(page.locator('//*[@id="error-summary"]/div/div')).toContainText('Please answer this question');
+   94 |
+   95 |     })
+   96 |
+   97 |     test('single page analysis', async ({ page }) => {
+   98 |         await page.goto('https://www.gov.uk/calculate-your-holiday-entitlement');
+   99 |         await page.click('a[href="/calculate-your-holiday-entitlement/y"]');
+  100 |         await expect(page.locator('h1')).toHaveText(irregularHours_content.pageTitle);
+  101 |         await expect(page.locator('//*[@id="current-question"]/span')).toContainText(irregularHours_content.subtitle);
+  102 |         await expect(page.locator('.gem-c-hint.govuk-hint')).toContainText(irregularHours_content.hint);
+  103 |         const h2Elements = await page.locator('.govuk-footer__heading.govuk-heading-m').all();
+  104 |         for (const h2 of h2Elements) {
+  105 |             await expect(h2).toContainText(irregularHours_content.footerTitles[h2Elements.indexOf(h2)]);
+  106 |         }
+  107 |     })
+  108 |     
+  109 |
+  110 | })
+```
